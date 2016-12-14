@@ -20,7 +20,7 @@ docker build -t boost_clf_prni:repr -f Dockerfile .
 Run Container:
 
 ``` bash
-docker run -it -p 8809:8888 boost_clf_prni:repr bash jupyter notebook --no-browser --ip="*"
+docker run -it -p 8809:8888 boost_clf_prni:repr bash -с 'jupyter notebook --no-browser --ip="*"'
 ```
 
 Open http://localhost:8809 on your local machine.
