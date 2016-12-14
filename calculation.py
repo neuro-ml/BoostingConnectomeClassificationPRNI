@@ -1,3 +1,8 @@
+def warn(*args, **kwargs):
+    pass
+import warnings
+warnings.warn = warn
+
 from sklearn.preprocessing import FunctionTransformer
 
 from reskit.norms import binar_norm, wbysqdist
@@ -20,11 +25,6 @@ from sklearn.model_selection import StratifiedKFold
 import os
 import pandas as pd
 import numpy as np
-
-def warn(*args, **kwargs):
-    pass
-import warnings
-warnings.warn = warn
 
 from reskit.core import Transformer, Pipeliner
 
@@ -127,7 +127,8 @@ scalers = [('minmax', MinMaxScaler()),
 classifiers = [('LR', LogisticRegression()),
                ('RF', RandomForestClassifier()),
                ('SVC', SVC()),
-               ('XGB', XGBClassifier(nthread=1)),
+               ('XGB_1', XGBClassifier(nthread=1)),
+               ('XGB_2', XGBClassifier(nthread=1)),
                ('SGD', SGDClassifier())]
 
 steps = [('Data', data),
@@ -148,44 +149,58 @@ banned_combos = [('UCLAsource', 'origN'),
                  ('SVC', 'origS'),
                  ('SGD', 'origS'),
                  ('RF', 'minmax'),
-                 ('XGB', 'minmax')]
+                 ('XGB_1', 'minmax'),
+                 ('XGB_2', 'minmax'),
+                 ('UCLAbaseline', 'XGB_1'),
+                 ('UCLAsource', 'XGB_2')]
 
 param_grid = dict(
     LR=dict(
-#        C=[0.01, 0.05, 0.1] + [0.05*i for i in range(3, 21)],
-#        max_iter=[50, 100, 500],
+        C=[0.01, 0.05, 0.1] + [0.05*i for i in range(3, 21)],
+        max_iter=[50, 100, 500],
         penalty=['l1', 'l2']
     ),
     SGD=dict(
-#        alpha=[0.001, 0.01, 0.1, 0.5, 1.0],
-#        l1_ratio=[0, 0.2, 0.4, 0.6, 0.8, 1],
-#        loss=['hinge', 'log', 'modified_huber'],
+        alpha=[0.001, 0.01, 0.1, 0.5, 1.0],
+        l1_ratio=[0, 0.2, 0.4, 0.6, 0.8, 1],
+        loss=['hinge', 'log', 'modified_huber'],
         n_iter=[50, 100, 200],
-#        penalty=['elasticnet']
+        penalty=['elasticnet']
     ),
     SVC=dict(
-#        C=[0.0005, 0.001, 0.005, 0.01] + [i*0.05 for i in range(1,11)],
-#        degree=[2, 3, 4],
-#        kernel=['linear', 'poly', 'rbf', 'sigmoid'],
+        C=[0.0005, 0.001, 0.005, 0.01] + [i*0.05 for i in range(1,11)],
+        degree=[2, 3, 4],
+        kernel=['linear', 'poly', 'rbf', 'sigmoid'],
         max_iter=[50, 100, 150],
     ),
     RF=dict(
-#        criterion=['entropy', 'gini'],
-#        max_depth=[3, 5, 7, 10, 20],
-#        max_features=['log2', 'sqrt'] + [0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5, 1.0],
+        criterion=['entropy', 'gini'],
+        max_depth=[3, 5, 7, 10, 20],
+        max_features=['log2', 'sqrt'] + [0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5, 1.0],
         n_estimators=[10, 50, 100, 200, 500]
     ),
-    XGB=dict(
-#        colsample_bytree=[0.05*i for i in range(1,21)],
+    XGB_1=dict(
+        colsample_bytree=[0.01] + [0.05*i for i in range(1,21)],
+        learning_rate=[0.01*i for i in range(1,6)] + [0.05*i for i in range(2,11)],
+        max_depth=[i for i in range(1,12)],
+        n_estimators=[10, 50, 100, 200, 500],
+        nthread=[1],
+        reg_alpha=[0, 1],
+        reg_lambda=[0, 1],
+        subsample=[0.5, 0.7, 1]
+    ),
+    XGB_2=dict(
+        colsample_bytree=[0.01] + [0.05*i for i in range(1,21)],
 #        learning_rate=[0.01*i for i in range(1,6)] + [0.05*i for i in range(2,11)],
 #        max_depth=[i for i in range(1,12)],
 #        n_estimators=[10, 50, 100, 200, 500],
-#        nthread=[1],
+        nthread=[1],
 #        reg_alpha=[0, 1],
 #        reg_lambda=[0, 1],
-        subsample=[0.5, 0.7, 1]
+#        subsample=[0.5, 0.7, 1]
     )
 )
 
 pipe = Pipeliner(steps, eval_cv=eval_cv, grid_cv=grid_cv, param_grid=param_grid, banned_combos=banned_combos)
-results = pipe.get_results('Data/dti/', caching_steps=['Data', 'Weighters', 'Normalizers', 'Featurizers'], scoring=['roc_auc'])
+pipe.plan_table = pipe.plan_table[19:20]
+pipe.get_results('Data/dti/', caching_steps=['Data', 'Weighters', 'Normalizers', 'Featurizers'], scoring=['roc_auc'])

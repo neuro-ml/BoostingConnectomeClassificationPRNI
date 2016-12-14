@@ -7,8 +7,8 @@ Link to paper: http://ieeexplore.ieee.org/abstract/document/7552353/
 Clone:
 
 ``` bash
-git clone https://github.com/neuro-ml/BoostingConnectomeClassificationPRNI.git
-cd BoostingConnectomeClassificationPRNI
+git clone https://github.com/neuro-ml/PRNI2016.git
+cd PRNI2016
 ```
 
 Build:
