@@ -13,6 +13,7 @@ RUN apt-get install -yqq \
 	zlib1g-dev
 
 RUN pip3 install -U pip
+RUN pip3 install -U xgboost
 RUN pip3 install -U notebook==4.2.3
 RUN pip3 install -U https://github.com/neuro-ml/reskit/archive/master.zip
 
