@@ -1,0 +1,34 @@
+,Data,Weighters,Normalizers,Featurizers,Selectors,Scalers,Classifiers,grid_roc_auc_mean,grid_roc_auc_std,grid_roc_auc_best_params,eval_roc_auc_mean,eval_roc_auc_std,eval_roc_auc_scores
+0,UCLAsource,origW,spectral,degrees,var_threshold,minmax,LR,0.654255319149,0.20893086183,"{'penalty': 'l1', 'max_iter': 50, 'C': 0.5}",0.630333333333,0.218954333138,"[ 0.63333333  0.88        0.64        1.          0.4         0.85        0.65
+  0.25        0.5         0.5       ]"
+1,UCLAsource,origW,spectral,degrees,var_threshold,minmax,SVC,0.681914893617,0.177100023402,"{'kernel': 'rbf', 'max_iter': 50, 'C': 0.01, 'degree': 2}",0.695333333333,0.131514257782,"[ 0.53333333  0.8         0.72        1.          0.7         0.7         0.6
+  0.6         0.55        0.75      ]"
+2,UCLAsource,origW,spectral,degrees,var_threshold,minmax,SGD,0.682269503546,0.16890357928,"{'penalty': 'elasticnet', 'alpha': 0.001, 'n_iter': 50, 'l1_ratio': 1, 'loss': 'hinge'}",0.568666666667,0.126896283108,"[ 0.36666667  0.52        0.6         0.85        0.45        0.55        0.7
+  0.55        0.5         0.6       ]"
+3,UCLAsource,origW,spectral,degrees,var_threshold,origS,RF,0.706737588652,0.204444110938,"{'n_estimators': 500, 'criterion': 'entropy', 'max_depth': 7, 'max_features': 0.01}",0.616,0.213316666016,[ 0.5   0.36  0.8   0.8   0.75  0.65  0.2   0.6   0.55  0.95]
+4,UCLAsource,origW,spectral,degrees,var_threshold,origS,XGB,0.762677304965,0.173007607563,"{'subsample': 1, 'reg_alpha': 0, 'nthread': 1, 'reg_lambda': 0, 'n_estimators': 10, 'learning_rate': 0.45, 'colsample_bytree': 0.1, 'max_depth': 1}",0.715666666667,0.167234366484,"[ 0.56666667  0.9         0.54        0.95        0.65        0.725       0.5
+  0.675       0.65        1.        ]"
+5,UCLAsource,binar,spectral,degrees,var_threshold,minmax,LR,0.614539007092,0.0914240516795,"{'penalty': 'l1', 'max_iter': 50, 'C': 0.30000000000000004}",0.609333333333,0.177925077865,"[ 0.53333333  0.64        0.52        0.45        0.9         0.6         0.55
+  0.9         0.7         0.3       ]"
+6,UCLAsource,binar,spectral,degrees,var_threshold,minmax,SVC,0.357269503546,0.206535626934,"{'kernel': 'linear', 'max_iter': 50, 'C': 0.25, 'degree': 2}",0.403,0.14085808461,[ 0.2   0.52  0.36  0.5   0.5   0.55  0.2   0.6   0.3   0.3 ]
+7,UCLAsource,binar,spectral,degrees,var_threshold,minmax,SGD,0.638120567376,0.146136662059,"{'penalty': 'elasticnet', 'alpha': 0.1, 'n_iter': 100, 'l1_ratio': 1, 'loss': 'modified_huber'}",0.589,0.15371727294,[ 0.6   0.48  0.76  0.75  0.85  0.5   0.5   0.55  0.6   0.3 ]
+8,UCLAsource,binar,spectral,degrees,var_threshold,origS,RF,0.609840425532,0.263017930915,"{'n_estimators': 10, 'criterion': 'entropy', 'max_depth': 7, 'max_features': 0.1}",0.453833333333,0.265971019725,"[ 0.28333333  0.          0.68        0.3         0.75        0.875       0.675
+  0.175       0.4         0.4       ]"
+9,UCLAsource,binar,spectral,degrees,var_threshold,origS,XGB,0.694503546099,0.16610522986,"{'subsample': 0.7, 'reg_alpha': 1, 'nthread': 1, 'reg_lambda': 1, 'n_estimators': 10, 'learning_rate': 0.30000000000000004, 'colsample_bytree': 0.01, 'max_depth': 3}",0.547,0.191992187341,[ 0.5   0.76  0.16  0.6   0.85  0.5   0.3   0.65  0.6   0.55]
+10,UCLAsource,wbysqdist,spectral,degrees,var_threshold,minmax,LR,0.75780141844,0.228233297542,"{'penalty': 'l2', 'max_iter': 50, 'C': 0.75}",0.731666666667,0.148968676797,"[ 0.46666667  0.8         0.6         0.9         0.8         0.9         0.55
+  0.65        0.75        0.9       ]"
+11,UCLAsource,wbysqdist,spectral,degrees,var_threshold,minmax,SVC,0.844680851064,0.178895560449,"{'kernel': 'linear', 'max_iter': 50, 'C': 0.25, 'degree': 2}",0.754333333333,0.120840114752,"[ 0.63333333  0.76        0.6         0.9         0.75        0.9         0.55
+  0.75        0.8         0.9       ]"
+12,UCLAsource,wbysqdist,spectral,degrees,var_threshold,minmax,SGD,0.823226950355,0.191707798317,"{'penalty': 'elasticnet', 'alpha': 0.01, 'n_iter': 200, 'l1_ratio': 0, 'loss': 'hinge'}",0.775333333333,0.156639713994,"[ 0.43333333  0.88        0.64        0.95        0.8         0.9         0.6
+  0.85        0.8         0.9       ]"
+13,UCLAsource,wbysqdist,spectral,degrees,var_threshold,origS,RF,0.804875886525,0.158520836972,"{'n_estimators': 200, 'criterion': 'entropy', 'max_depth': 7, 'max_features': 0.05}",0.638666666667,0.125177207723,"[ 0.36666667  0.76        0.56        0.8         0.7         0.5         0.7
+  0.7         0.6         0.7       ]"
+14,UCLAsource,wbysqdist,spectral,degrees,var_threshold,origS,XGB,0.851063829787,0.106884985761,"{'subsample': 1, 'reg_alpha': 0, 'nthread': 1, 'reg_lambda': 1, 'n_estimators': 200, 'learning_rate': 0.25, 'colsample_bytree': 0.05, 'max_depth': 3}",0.653,0.16510905487,[ 0.4   0.84  0.44  0.8   0.55  0.8   0.7   0.45  0.8   0.75]
+15,UCLAbaseline,origW,origN,origF,var_threshold,minmax,LR,0.59024822695,0.166826334413,"{'penalty': 'l2', 'max_iter': 50, 'C': 0.75}",0.451666666667,0.184765617292,"[ 0.86666667  0.48        0.32        0.15        0.5         0.3         0.6
+  0.35        0.5         0.45      ]"
+16,UCLAbaseline,origW,origN,origF,var_threshold,minmax,SVC,0.594680851064,0.201967461713,"{'kernel': 'sigmoid', 'max_iter': 50, 'C': 0.01, 'degree': 2}",0.434666666667,0.151798111539,"[ 0.76666667  0.36        0.32        0.3         0.45        0.2         0.6
+  0.45        0.45        0.45      ]"
+17,UCLAbaseline,origW,origN,origF,var_threshold,minmax,SGD,0.613475177305,0.193240938361,"{'penalty': 'elasticnet', 'alpha': 0.001, 'n_iter': 200, 'l1_ratio': 0.8, 'loss': 'hinge'}",0.497666666667,0.172440327843,"[ 0.76666667  0.48        0.28        0.2         0.55        0.45        0.6
+  0.5         0.75        0.4       ]"
+18,UCLAbaseline,origW,origN,origF,var_threshold,origS,RF,0.693617021277,0.155096751299,"{'n_estimators': 100, 'criterion': 'gini', 'max_depth': 7, 'max_features': 0.05}",0.592666666667,0.209325902204,"[ 0.86666667  0.8         0.36        0.5         0.45        0.55        1.
+  0.55        0.35        0.5       ]"
