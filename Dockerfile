@@ -15,6 +15,7 @@ RUN apt-get install -yqq \
 RUN pip3 install -U pip
 RUN pip3 install -U xgboost
 RUN pip3 install -U notebook==4.2.3
+RUN pip3 install -r https://raw.githubusercontent.com/neuro-ml/reskit/master/requirements.txt
 RUN pip3 install -U https://github.com/neuro-ml/reskit/archive/master.zip
 
 ADD . prni/
